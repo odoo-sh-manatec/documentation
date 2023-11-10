@@ -947,6 +947,75 @@ valid and a new section needed for customs.
    :alt: PDF report section for the Electronic Exports of Goods PDF Report.
    :align: center
 
+eCommerce Electronic Invoicing
+------------------------------
+
+To install the *Chilean eCommerce* module go to **Apps** and search for the module by its technical name 
+`l10n_cl_edi_website_sale` and click the **Activate** button.
+
+.. image:: chile/ecommerce_module_chile.png
+   :align: center 
+   :alt: l10n_cl eCommerce module
+
+This module enables the features and configurations to:
+
+- Generate electronic documents from the eCommerce application.
+- Support for required fiscal fields in the eCommerce application.
+- Effectively let the final client decide the electronic document to be generated for their purchase.
+
+Once all of the configurations are made for the Chilean electronic invoice flow, it is also needed to complete 
+certain configurations for the eCommerce flow to be integrated.
+
+Configure your website so it is possible to generate electronic documents in the sale process by going to 
+:menuselection:`Website --> Configuration --> Settings --> Invoicing` and activating the **Automatic Invoice** feature, 
+which will automatically generate the documents when the online payment is confirmed.
+
+.. image:: chile/website_configurations_ecommerce_chile.png
+   :align: center 
+   :alt: Invoice Policy and Automatic Invoice configurations
+   
+Since an online payment needs to be confirmed for the **Automatic Invoice** feature to generate the document, a 
+**payment provider** should be configured for the related website.
+
+.. note::
+   Review our :doc:`../finance/Payment providers (credit cards, online payments)` documentation to know which 
+are supported in Odoo and how to configure them.
+   
+It is also recommended to configure your products to be able to invoice them at the point of an online payment 
+confirmation by going to the product template of the desired product and selecting the invoicing policy to **ordered quantities**.
+
+.. image:: chile/ordered_quantities_product.png
+   :align: center 
+   :alt: Invoice Policy configuration in Products
+   
+   
+Invoicing Flows for eCommerce
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Electronic Invoices or Receipts for Chilean clients:** Clients from Chile will be able to select if they need an invoice or 
+a ballot for their purchase in an extra step added in the checkout process.
+
+.. image:: chile/select_edi_docs_ecommerce.png
+   :align: center 
+   :alt: Option for EDI Documents for clients
+   
+- If the client selects the **Electronic Invoice** option, fiscal fields will be required to be filled such as the Activity 
+Description, the Identification Number and their DTE Email.
+
+.. image:: chile/fiscal_fields_invoice_ecommerce.png
+   :align: center 
+   :alt: Fiscal fields required for an Invoice to be requested
+   
+- If the client selects the **Electronic Receipts** option, they will be directed to the next step and the electronic 
+document will be generated for the *Consumidor Final Anónimo* contact.
+
+**Foreign clients:** Clients from other countries (not Chile) will not follow the past steps, instead Odoo will 
+automatically generate an Electronic Receipt for them.
+
+.. note::
+   If the purchase through eCommerce requires an export, the customer will need to contact your company to generate 
+an Electronic Export Invoice (Document Type 110) in the Accounting app.
+
 Financial reports
 =================
 
